@@ -1,10 +1,10 @@
-import React, { useEffect, useState, Fragment } from "react";
-import { Link, withRouter, Redirect } from "react-router-dom";
+import React, { Fragment, useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 
-const Editprofile = ({
+const EditProfile = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
@@ -24,6 +24,7 @@ const Editprofile = ({
     youtube: "",
     instagram: ""
   });
+
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Editprofile = ({
       instagram: loading || !profile.social ? "" : profile.social.instagram
     });
   }, [loading, getCurrentProfile]);
+
   const {
     company,
     website,
@@ -59,17 +61,16 @@ const Editprofile = ({
     youtube,
     instagram
   } = formData;
+
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const onSubmit = e => {
     e.preventDefault();
     createProfile(formData, history, true);
   };
-  useEffect(() => {
-    getCurrentProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getCurrentProfile]);
-  return loading && profile === null ? (
+
+  return (
     <Fragment>
       <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">
@@ -234,11 +235,9 @@ const Editprofile = ({
         </Link>
       </form>
     </Fragment>
-  ) : (
-    <Redirect to="/dashboard" />
   );
 };
-Editprofile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
@@ -249,4 +248,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { createProfile, getCurrentProfile }
-)(withRouter(Editprofile));
+)(withRouter(EditProfile));
