@@ -34,7 +34,7 @@ const Dashboard = ({
 
           <div className="my-2">
             <button
-              className="btn-danger"
+              className="btn btn-danger"
               onClick={() => {
                 deleteAccount();
               }}

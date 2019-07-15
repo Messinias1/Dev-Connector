@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addExperience } from "../../actions/profile";
@@ -82,7 +82,7 @@ const AddExperience = ({ addExperience, history }) => {
               name="current"
               checked={current}
               value={current}
-              onChange={() => {
+              onChange={e => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
@@ -111,9 +111,9 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <a className="btn btn-light my-1" href="dashboard.html">
           Go Back
-        </Link>
+        </a>
       </form>
     </Fragment>
   );
