@@ -29,13 +29,13 @@ export const getPosts = () => async dispatch => {
 };
 
 // Add Like
-export const addLike = postId => async dispatch => {
+export const addLike = id => async dispatch => {
   try {
-    const res = await axios.put(`/api/posts/like/${postId}`);
+    const res = await axios.put(`/api/posts/like/${id}`);
 
     dispatch({
       type: UPDATE_LIKES,
-      payload: { postId, likes: res.data }
+      payload: { id, likes: res.data }
     });
   } catch (err) {
     dispatch({
@@ -86,7 +86,7 @@ export const deletePost = id => async dispatch => {
 export const addPost = formData => async dispatch => {
   const config = {
     headers: {
-      "Content-Type": "application"
+      "Content-Type": "application/json"
     }
   };
   try {
@@ -127,7 +127,7 @@ export const getPost = id => async dispatch => {
 export const addComment = (postId, formData) => async dispatch => {
   const config = {
     headers: {
-      "Content-Type": "application"
+      "Content-Type": "application/json"
     }
   };
   try {
