@@ -11,10 +11,10 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Developer Connector</h1>
+          <h1 className="x-large">Svenska 101</h1>
           <p className="lead">
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Create a free account and learn Swedish easily by connecting with a
+            tutor or listening to Swedish Radio.
           </p>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">
